@@ -222,7 +222,7 @@ const getUserCoordinates = () =>
                     alert("Please enable location services");
                 }
                 else if (error.code === error.PERMISSION_DENIED) {
-                    alert("Geolocation request denied. Please enable/reset location permission to grant access again.");
+                    alert("Geolocation request denied. Please enable/reset location permission and refresh the page to grant access again.");
                 } 
                 else {
                     alert(`ERROR - (${error.code} : ${error.message})`);
