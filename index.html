@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeatherWizard</title>
+  <link rel="icon" type="image/x-icon" href="images/weather app icon.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen' ></i>
+        <span class="logo navLogo"><a href="#">WeatherWizard</a></span>
+        <div class="menu">
+            <div class="logo-toggle">
+                <span class="logo"><a href="#">WeatherWizard</a></span>
+                <i class='bx bx-x siderbarClose'></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#CWF">Current Weather Statistics</a></li>
+                <li><a href="#5day">5-Day Forecast</a></li>
+                <li><a href="#AQI">Air Quality Statistics</a></li>
+            </ul>
+        </div>
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<br><br><br>
+
+  <div class="container">
+    <div class="weather-input">
+      <input id="city" type="text" placeholder="Enter place" spellcheck="false">
+      <button type="submit" id="submit">Search</button>
+      <div class="separator"></div>
+      <button class="location-btn">Use current location</button>
+    </div>
+    <div class="weather-data">
+      <div class="current-weather">
+        <div class="details">
+          <h2 id="CWF">Current Weather Statistics</h2>
+          <br>
+          <div class="days">
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/location.png" height="25px" width="25px">&nbsp;<b>Place</b><hr>
+              <span id="name1"></span>
+              <div class="icon1"></div>
+            </li>
+          </ul>
+          
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/weather.png" height="25px" width="25px">&nbsp;<b>Weather</b><hr>
+              <div class="icon"></div>
+            </li>
+          </ul>
+
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/celsius.png" height="25px" width="25px">&nbsp;<b>Temperature</b><hr>
+              <span id="temp"></span>
+            </li>
+          </ul>
+
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/humidity.png" height="25px" width="25px">&nbsp;<b>Humidity</b><hr>
+              <span id="humidity"></span>
+            </li>
+          </ul>
+
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/barometer1.png" height="25px" width="25px">&nbsp;<b>Pressure</b><hr>
+              <span id="pressure"></span>
+            </li>
+          </ul>
+
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/view.png" height="25px" width="25px">&nbsp;<b>Visibility</b><hr>
+              <span id="visibility"></span>
+            </li>
+          </ul>
+
+          <ul class="weather-cards">
+            <li class="card">
+              <img src="images/wind1.png" height="25px" width="25px">&nbsp;<b>Wind</b><hr>
+              <span id="wind"></span>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="separator"></div>
+
+      <div class="weather-data">
+        <div class="current-weather">
+          <h2 id="5day">5-Day Forecast</h2><br>
+        </div>
+      </div><br>
+      <div class="days">
+        <ul class="weather-cards-1">
+        </ul>
+
+        <ul class="weather-cards-1">
+        </ul>
+
+        <ul class="weather-cards-1">
+        </ul>
+
+        <ul class="weather-cards-1">
+        </ul>
+
+        <ul class="weather-cards-1">
+        </ul>
+      </div>
+      
+      <div class="separator"></div>
+
+      <div class="current-weather">
+        <div class="details">
+          <h2 id="AQI">Air Quality Statistics</h2>
+          <br>
+          <div class="days">
+            
+            <ul class="weather-cards">
+              <li class="card">
+                <b>Overall Air Quality</b><hr>
+                <span id="OAQ"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>CO</b><hr>
+                <span id="CO"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>NO</b><hr>
+                <span id="NO"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>NH<sub>3</sub></b><hr>
+                <span id="NH3"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>NO<sub>2</sub></b><hr>
+                <span id="NO2"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>O<sub>3</sub></b><hr>
+                <span id="O3"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>PM<sub>2.5</sub></b><hr>
+                <span id="PM25"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>PM<sub>10</sub></b><hr>
+                <span id="PM10"></span>
+              </li>
+            </ul>
+
+            <ul class="weather-cards">
+              <li class="card">
+                <b>SO<sub>2</sub></b><hr>
+                <span id="SO2"></span>
+              </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>
