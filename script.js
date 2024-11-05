@@ -1,3 +1,4 @@
+require('dotenv').config();
 const API_key = process.env.API_KEY;
 const weather = document.querySelector(".icon");
 const countrycode = document.querySelector(".icon1");
