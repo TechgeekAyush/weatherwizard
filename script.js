@@ -1,4 +1,4 @@
-const API_key = "3291577ecd5cadc11840fdaa4e30e0f8";
+const API_key = process.env.API_KEY;
 const weather = document.querySelector(".icon");
 const countrycode = document.querySelector(".icon1");
 const weatherCardsDiv = document.querySelector(".weather-cards-1");
