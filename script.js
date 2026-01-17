@@ -160,23 +160,40 @@ function getWeather(cityname, latitude, longitude) {
     fetch(`/.netlify/functions/forecast?latitude=${latitude}&longitude=${longitude}`)
         .then(res => res.json())
         .then(data => {
-            const uniqueForecastDays = [];
-            const fiveDaysForecast = data.list.filter(forecast => {
-                const forecastDate = new Date(forecast.dt_txt).getDate();
-                if (!uniqueForecastDays.includes(forecastDate)) {
-                    return uniqueForecastDays.push(forecastDate);
+            // Get current hour when the query is made
+            const currentHour = new Date().getHours();
+
+            const forecastByDay = {};
+
+            // Group forecasts by date and find the one closest to current hour
+            data.list.forEach(forecast => {
+                const forecastDate = forecast.dt_txt.split(" ")[0]; // Get date part (YYYY-MM-DD)
+                const forecastTime = forecast.dt_txt.split(" ")[1]; // Get time part (HH:MM:SS)
+                const hour = parseInt(forecastTime.split(":")[0]); // Extract hour
+
+                // Calculate how far this time is from current hour
+                const distanceFromCurrentHour = Math.abs(hour - currentHour);
+
+                // Keep this forecast if it's the closest to current hour for this day
+                if (!forecastByDay[forecastDate] || distanceFromCurrentHour < forecastByDay[forecastDate].distanceFromCurrentHour) {
+                    forecastByDay[forecastDate] = {
+                        data: forecast,
+                        distanceFromCurrentHour: distanceFromCurrentHour
+                    };
                 }
             });
 
             weatherCardsDiv.innerHTML = "";
 
-            fiveDaysForecast.forEach((data, index) => {
-                if (index === 0) return;
-                else {
-                    const html7 = createWeatherCard(data);
-                    weatherCardsDiv.insertAdjacentHTML("beforeend", html7);
-                }
-            });
+            // Convert to array, skip first day, and display
+            Object.keys(forecastByDay)
+                .sort()
+                .slice(1) // Skip today
+                .forEach(date => {
+                    const forecastData = forecastByDay[date].data;
+                    const html = createWeatherCard(forecastData);
+                    weatherCardsDiv.insertAdjacentHTML("beforeend", html);
+                });
         }).catch(() => {
             alert("An error occurred while fetching the 5 day forecast");
         });
@@ -205,11 +222,11 @@ submit.addEventListener("click", (e) => {
 
 const loc = document.querySelector(".location-btn");
 const getUserCoordinates = () => {
-    if(navigator && navigator.geolocation) {
+    if (navigator && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             position => {
                 const { latitude, longitude } = position.coords;
-                
+
                 // Call geocode function for reverse geocoding
                 fetch(`/.netlify/functions/geocode?latitude=${latitude}&longitude=${longitude}&type=reverse`)
                     .then(response => response.json())
@@ -226,12 +243,12 @@ const getUserCoordinates = () => {
                 }
                 else if (error.code === error.PERMISSION_DENIED) {
                     alert("Geolocation request denied. Please enable/reset location permission and refresh the page to grant access again.");
-                } 
+                }
                 else {
                     alert(`ERROR - (${error.code} : ${error.message})`);
                 }
             }),
-            {enableHighAccuracy: true};
+            { enableHighAccuracy: true };
     }
 }
 
