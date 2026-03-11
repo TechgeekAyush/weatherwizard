@@ -288,7 +288,8 @@ body.dark .weather-input input::placeholder {
     gap: 10px;
     justify-content: center;
     margin: 6px;
-    max-width: 250px;
+    width: 100%;
+    max-width: none;
 }
 
 /* forecast container should be fluid so its cards can line up horizontally */
