@@ -312,14 +312,17 @@ body.dark .weather-input input::placeholder {
     align-items: center;
     justify-content: center;
     color: #fff;
-    padding: 18px 16px;
+    padding: 24px 20px;
+    /* more breathing room */
     list-style: none;
     background: #656667;
     border-radius: 5px;
     text-align: center;
-    flex: 1 1 150px;
+    flex: 1 1 200px;
+    /* larger base size */
     /* allow cards to grow/shrink */
-    max-width: 250px;
+    max-width: 320px;
+    /* wider max width */
 }
 
 /* normalize spacing of text elements inside cards */
@@ -329,7 +332,9 @@ body.dark .weather-input input::placeholder {
 .weather-cards-1 .card h3,
 .weather-cards-1 .card h4,
 .weather-cards-1 .card p {
-    margin: 4px 0;
+    margin: 6px 0;
+    /* a little more vertical space */
+    line-height: 1.3;
 }
 
 
