@@ -268,6 +268,18 @@ body.dark .weather-input input::placeholder {
     margin-top: -5px;
 }
 
+/* ensure any image inside a card is centered */
+.weather-cards .card img,
+.weather-cards-1 .card img {
+    display: block;
+    margin: 0 auto 6px auto;
+}
+
+/* wind icon may need extra vertical alignment */
+.wind-icon {
+    margin: 0 auto 6px auto;
+}
+
 .current-weather .icon h4 {
     margin-top: -10px;
     text-transform: capitalize;

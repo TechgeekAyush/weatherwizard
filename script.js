@@ -90,7 +90,7 @@ const createVisibility = (data) => {
 const createWind = (data) => {
     wind1 = (data.wind.speed * 3.6).toFixed(2) + " km/hr"
     wind2 = data.wind.deg + " degrees"
-    return `<img src="images/wind.png" style="padding:20px 20px" height="105px" width="105px">
+    return `<img src="images/wind.png" class="wind-icon" height="105px" width="105px">
             <p>Wind Speed -> ${wind1}</p>
             <p>Wind Direction -> ${wind2}</p>`
 }
